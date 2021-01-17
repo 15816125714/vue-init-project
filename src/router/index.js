@@ -2,6 +2,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
+const publicRoutes = [];
+const reqRoutesCtx = require.context("../views", true, /route\.js$/);
+reqRoutesCtx.keys().forEach((route) => {
+  const routerModule = reqRoutesCtx(route);
+  publicRoutes.push(routerModule.default || routerModule);
+})
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -10,14 +17,8 @@ const routes = [
     name: 'Home',
     component: Home
   },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+  // 自动导入路由模块
+  ...publicRoutes,
 ]
 
 const router = new VueRouter({
