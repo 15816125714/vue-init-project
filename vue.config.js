@@ -14,9 +14,10 @@ module.exports = {
     // alias设置目录别名
     config.resolve.alias
       .set('@', resolve('src'))
-      .set('views', resolve('src/views/'))
+      .set('m', resolve('src/modules/'))
       .set('assets', resolve('src/assets/'))
       .set('#', resolve('src/components/'))
+      .set('api', resolve('src/api'))
 
     config.module
       .rule('images')
