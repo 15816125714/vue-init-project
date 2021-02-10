@@ -14,9 +14,9 @@ module.exports = {
     // alias设置目录别名
     config.resolve.alias
       .set('@', resolve('src'))
-      .set('m', resolve('src/modules/'))
-      .set('assets', resolve('src/assets/'))
-      .set('#', resolve('src/components/'))
+      .set('m', resolve('src/modules'))
+      .set('assets', resolve('src/assets'))
+      .set('#', resolve('src/components'))
       .set('api', resolve('src/api'))
 
     config.module
